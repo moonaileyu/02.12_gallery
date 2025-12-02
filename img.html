@@ -1,0 +1,74 @@
+<style>
+    .gif
+    {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .buttons
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    button
+    {
+        font-family: monospace;
+        font-size: 12pt;
+        border-radius: 5px;
+        padding: 10px 20px;
+        background: transparent;
+        box-shadow: 0 0 15px rgb(180, 180, 180);
+        border: none;
+    }
+</style>
+
+<body>
+    
+    <div class="gif">
+        <img src="images/5.gif" name="picture"/>
+    </div>
+
+    <br/>
+
+    <div class="buttons">
+        <button id="previousButton">&LeftArrow; Previous</button>
+        <button id="nextButton">Next &RightArrow;</button>       
+    </div>
+
+    <script type="text/javascript">
+
+        var locations = new Array("images/1.gif", "images/2.gif",
+            "images/3.gif", "images/4.gif");
+        var currentImage = 0;
+
+        let previousButton = document.querySelector("#previousButton");
+        previousButton.addEventListener("click", previousImage);
+
+        let nextButton = document.querySelector("#nextButton");
+        nextButton.addEventListener("click", nextImage);
+
+        function previousImage() 
+        {
+            currentImage--;
+            if (currentImage < 0) 
+                currentImage = locations.length - 1;                
+            document.images["picture"].src = locations[currentImage];
+            return false;
+        }
+
+        function nextImage() 
+        {
+            currentImage++;
+            if (currentImage == locations.length) 
+                currentImage = 0;                
+            document.images["picture"].src = locations[currentImage];
+            return false;
+        }
+
+    </script>
+
+</body>
